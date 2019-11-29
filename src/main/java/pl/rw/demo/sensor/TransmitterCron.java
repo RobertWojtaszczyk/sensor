@@ -9,15 +9,14 @@ import java.io.IOException;
 public class TransmitterCron {
     private static final String CRON_EVERY_TWO_MINUTES = "0 0/2 * ? * *";
 
-    @Scheduled(cron = CRON_EVERY_TWO_MINUTES)
-    //@Scheduled(fixedDelay = 1000)
+    //@Scheduled(cron = CRON_EVERY_TWO_MINUTES)
+    @Scheduled(fixedDelay = 2000)
     public void sendTemperature() {
-        System.out.println("Starting crone job");
         TempSensor tempSensor = new TempSensor();
         try {
             tempSensor.sendTemperature();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Can not connect to host!");
         }
     }
 }
