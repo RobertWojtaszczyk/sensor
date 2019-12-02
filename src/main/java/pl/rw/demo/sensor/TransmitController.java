@@ -10,8 +10,8 @@ public class TransmitController {
 
     OkHttpClient client = new OkHttpClient();
 
-    boolean post(String url, String json) throws IOException {
-        RequestBody body = RequestBody.create(JSON, json);
+    boolean post(String url, String jsonBody) throws IOException {
+        RequestBody body = RequestBody.create(jsonBody, JSON);
         Request request = new Request.Builder()
                 .url(url)
                 .post(body)
