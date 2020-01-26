@@ -17,6 +17,7 @@ public class TransmitController {
                 .post(body)
                 .build();
         try (Response response = client.newCall(request).execute()) {
+            assert response.body() != null;
             System.out.println("response.body().string() = " + response.body().string());
             return response.isSuccessful();
         }

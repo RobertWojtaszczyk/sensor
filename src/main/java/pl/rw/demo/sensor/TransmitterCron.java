@@ -16,11 +16,12 @@ public class TransmitterCron {
     }
 
     //@Scheduled(cron = CRON_EVERY_TWO_MINUTES)
-    @Scheduled(fixedDelay = 100)
+    @Scheduled(fixedDelay = 1)
     public void sendTemperature() {
         // TempSensor tempSensor = new TempSensor();
         try {
             System.out.println(tempSensor.sendTemperature());
+            //tempSensor.sendTemperature();
         } catch (IOException e) {
             System.out.println("Can not connect to host!");
         }

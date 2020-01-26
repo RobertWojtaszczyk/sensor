@@ -2,6 +2,7 @@ package pl.rw.demo.sensor;
 
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Component;
+import pl.rw.demo.sensor.domain.TempReading;
 
 @Component
 public class TransmitMq {
@@ -13,6 +14,11 @@ public class TransmitMq {
 
     public boolean sendTemperature(String jsonBody) {
         rabbitTemplate.convertAndSend("sensor", jsonBody);
+        return true;
+    }
+
+    public boolean sendTemperature(TempReading tempReading) {
+        rabbitTemplate.convertAndSend("sensor", tempReading);
         return true;
     }
 
