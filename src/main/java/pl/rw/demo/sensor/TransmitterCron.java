@@ -16,7 +16,7 @@ public class TransmitterCron {
     }
 
     //@Scheduled(cron = CRON_EVERY_TWO_MINUTES)
-    @Scheduled(fixedDelay = 1)
+    @Scheduled(fixedDelay = 200)
     public void sendTemperature() {
         // TempSensor tempSensor = new TempSensor();
         try {
