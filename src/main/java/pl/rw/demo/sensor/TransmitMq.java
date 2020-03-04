@@ -19,6 +19,7 @@ public class TransmitMq {
 
     public boolean sendTemperature(TempReading tempReading) {
         rabbitTemplate.convertAndSend("sensor", tempReading);
+        System.out.println("Sending to RabbitMq tempReading = " + tempReading);
         return true;
     }
 

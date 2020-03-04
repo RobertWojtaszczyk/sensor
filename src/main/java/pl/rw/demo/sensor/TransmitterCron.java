@@ -20,8 +20,8 @@ public class TransmitterCron {
     public void sendTemperature() {
         // TempSensor tempSensor = new TempSensor();
         try {
-            System.out.println(tempSensor.sendTemperature());
-            //tempSensor.sendTemperature();
+            //System.out.println(tempSensor.sendTemperature());
+            tempSensor.sendTemperature();
         } catch (IOException e) {
             System.out.println("Can not connect to host!");
         }

@@ -13,9 +13,11 @@ import java.util.concurrent.ThreadLocalRandom;
 public class TempSensor {
     //private TransmitController transmitController = new TransmitController();
     private TransmitMq transmitMq;
+    private TransmitKafka transmitKafka;
 
-    public TempSensor(TransmitMq transmitMq) {
+    public TempSensor(TransmitMq transmitMq, TransmitKafka transmitKafka) {
         this.transmitMq = transmitMq;
+        this.transmitKafka = transmitKafka;
     }
 
     public boolean sendTemperature() throws IOException {
@@ -26,7 +28,9 @@ public class TempSensor {
         Instant timeStamp = Instant.now();
 
         TempReading tempReading = new TempReading(df.format(random), timeStamp.toString());
-        return transmitMq.sendTemperature(tempReading);
+        transmitKafka.sendTemperature(tempReading);
+        //return transmitMq.sendTemperature(tempReading);
+        return true;
 
         //String tempJson = "{\"temp\":\"" + df.format(random) + "\"}";
         //return transmitMq.sendTemperature(tempJson);
